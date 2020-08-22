@@ -1,27 +1,10 @@
 @extends('layouts.default')
 @section('content')
-<div class="row">
-  <div class="col-sm-12">
-    <h1 class="display-3">Contacts</h1>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>title</td>
-          <td>post</td>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($contents ?? '' as $content)
-        <tr>
-          <td>{{$content->title}}</td>
-          <td>{{$content->post}}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    <div>
-    </div>
-
-
-
-    @stop
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title" >Title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="/api/commet" class="card-link">Comment</a>
+  </div>
+</div>
+@stop

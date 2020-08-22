@@ -29,19 +29,9 @@ class Content extends Model
     public function findAll()
     {
         try {
-            // $users = DB::table('content')->paginate(15);
-
-            $products=Content::query();
-            $products = $products->paginate(5);
-        
-            return $products;
-    
-            $result = DB::table('content')->get();
-            return response()->json(['data' => $result]); 
- 
             $res = DB::table('content as c')
-            ->select('c.id', 'c.image', 'c.image', 'c.author_id')
-            ->get();
+                ->select('c.id', 'c.image', 'c.image', 'c.author_id')
+                ->get();
             return ($res);
         } catch (Exception $e) {
             throw $e;
@@ -52,5 +42,19 @@ class Content extends Model
     {
         $data = DB::table('content')->where('author_id', $authorId)->first();
         return $data;
+    }
+
+    public function updateContent($data)
+    {
+        try {
+            $id = DB::table('content')->where('title', $data['title']);
+            $content = new Content();
+            $content->id = $id;
+            $content->user_name = $data['name'];
+            $content->comment = $data['comment'];
+            $content->save();
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 }

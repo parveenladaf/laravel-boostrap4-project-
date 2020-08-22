@@ -17,10 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Show author login and signup page
 Route::get('/signup', 'AuthorController@index');
 Route::get('/login', 'AuthorController@show');
+
+// Create/login author
 Route::post('/signup/create', 'AuthorController@store');
 Route::post('/login', 'AuthorController@login');
+
+// Create content
 Route::post('/content/create', 'ContentController@create');
 Route::get('/contents', 'ContentController@getContents');
-Route::get('/file', 'FilesController@files');
+
+// For user comments
+Route::get('/commet', 'CommentController@index');
+Route::post('/user/comment', 'CommentController@store');
