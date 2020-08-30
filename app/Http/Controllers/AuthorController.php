@@ -98,7 +98,6 @@ class AuthorController extends Controller
         if (isset($contents)) {
             return view('home',compact('contents'));
         }
-        return view('home');
         
     }
 }

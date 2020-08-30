@@ -30,18 +30,16 @@ class ContentController extends Controller
             'success' => true,
             'message' => "Content save successfully"
         ];
-        return view('home');
+        return redirect('/');
+
     }
 
     public function getContents(Request $request)
     {
         $contentObj = new Content();
-        $list = $contentObj->findAll();
-        return response($list);
-        // $response =  [
-        //     'success' => true,
-        //     'list' => [$list]
-        // ];
-        // return $response;
+        $contents = $contentObj->findAll();
+        return view('home', compact('contents'));
     }
+
+
 }

@@ -43,7 +43,6 @@
         @include('shared.footer')
 
     </div>
-    <script src="{{ asset('app/routes.js') }}"></script>
 
 </body>
 

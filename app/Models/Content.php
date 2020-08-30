@@ -30,7 +30,7 @@ class Content extends Model
     {
         try {
             $res = DB::table('content as c')
-                ->select('c.id', 'c.image', 'c.image', 'c.author_id')
+                ->select('c.id','c.title', 'c.post')
                 ->get();
             return ($res);
         } catch (Exception $e) {
@@ -40,21 +40,9 @@ class Content extends Model
 
     public function getContent($authorId)
     {
-        $data = DB::table('content')->where('author_id', $authorId)->first();
+        $data = DB::table('content')->where('author_id', $authorId)->get();
         return $data;
     }
 
-    public function updateContent($data)
-    {
-        try {
-            $id = DB::table('content')->where('title', $data['title']);
-            $content = new Content();
-            $content->id = $id;
-            $content->user_name = $data['name'];
-            $content->comment = $data['comment'];
-            $content->save();
-        } catch (Exception $e) {
-            throw $e;
-        }
-    }
+   
 }

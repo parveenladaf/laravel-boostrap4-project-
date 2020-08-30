@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Content;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,9 +13,11 @@ class CommentController extends Controller
      * 
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function show(Request $request)
     {
-        return view('comment');
+        $content = Content::find((int)$request->id);
+
+        return view('comment', compact('content'));
     }
 
 
@@ -27,10 +30,9 @@ class CommentController extends Controller
     public function store(Request $request)
     {
 
-        
-        $autherObj = new Content();
 
-        $res = $autherObj->updateContent($request->all());
-        return view('home')->with('success', 'User commented successfully!');
+        $autherObj = new User();
+        $res = $autherObj->create($request->all());
+        return redirect('/');
     }
 }

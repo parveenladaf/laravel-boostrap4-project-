@@ -13,13 +13,19 @@ CREATE TABLE content (
     id int auto_increment NOT NULL,
     title varchar(255) NOT NULL,
     post varchar(500) DEFAULT NULL,
-    comment varchar(255) DEFAULT NULL,
-    user_name varchar(255) DEFAULT NULL,
     author_id smallint,
     PRIMARY KEY (id),
     CONSTRAINT fk_author_id FOREIGN KEY (author_id)
     REFERENCES author(author_id)
 );
 
-
+CREATE TABLE user1 (
+    user_id int auto_increment NOT NULL,
+    name varchar(255) NOT NULL,
+    comment varchar(500) DEFAULT NULL,
+    content_id smallint,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_author_id FOREIGN KEY (content_id)
+    REFERENCES content(id)
+);
 

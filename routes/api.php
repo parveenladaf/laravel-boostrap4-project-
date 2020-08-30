@@ -31,5 +31,5 @@ Route::post('/content/create', 'ContentController@create');
 Route::get('/contents', 'ContentController@getContents');
 
 // For user comments
-Route::get('/commet', 'CommentController@index');
+Route::get('/commet/show/{id}', 'CommentController@show')->name('comment.show');;
 Route::post('/user/comment', 'CommentController@store');
